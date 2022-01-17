@@ -145,11 +145,14 @@ for value in STANDARD_BASES:
 
 	CONFIGURATIONS.append(
 		{
-			"error": average_error,
+			"error": "%.3f" % (average_error),
 			"C":     "%g pF" % (pF(c)),
 			"R1":    "%g R" % (real_r1),
 			"R2":    "%g R" % (real_r2),
-			"R3":    "%g R" % (real_r3)
+			"R3":    "%g R" % (real_r3),
+			"f":     "%.3f Hz" % (real_f),
+			"Q":     "%.3f" % (real_q),
+			"A":     "%.3f V/V" % (real_a),
 		}
 	)
 
@@ -159,3 +162,17 @@ for configuration in CONFIGURATIONS:
 	print(configuration)
 # decreasing C by a factor of 10 increases R1, R2, and R3 by a factor of 10
 # the error stays the same!
+
+print("Q")
+print(Q(11e3, 91e3, 27e3))
+print(Q(2.7e3, 22e3, 6.3e3))
+print(Q(1.5e3, 11e3, 3.3e3))
+print(Q(7.5e3, 63e3, 18e3))
+print(Q(2e3, 15e3, 43e3))
+
+print("F")
+print(F(11e3, 91e3, 27e3, 0.1e-6))
+print(F(2.7e3, 22e3, 6.3e3, 0.1e-6))
+print(F(1.5e3, 11e3, 3.3e3, 0.047e-6))
+print(F(7.5e3, 63e3, 18e3, 0.0022e-6))
+print(F(2e3, 15e3, 43e3, 0.0022e-6))
