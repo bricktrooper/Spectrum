@@ -114,9 +114,13 @@ def A(r1, r2):
 
 # ======= STANDARD R AND C VALUES ======= #
 
-# Standard base multiples for 5 % tolerance resistors and 10 % tolerance capacitors.
-# Rhe standard values are available in decade multiples.
-STANDARD_BASES = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91]
+# The standard values are available in decade multiples.
+
+# Standard base multiples for 5 % tolerance resistors
+STANDARD_RESISTOR_BASES = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91]
+
+# Standard base multiples for 10 % tolerance capacitors
+STANDARD_CAPACITOR_BASES = [10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82]
 
 def decades(base):
 	values = []
@@ -127,7 +131,7 @@ def decades(base):
 
 # Generate standard resistor values
 STANDARD_RESISTORS = []
-for base in STANDARD_BASES:
+for base in STANDARD_RESISTOR_BASES:
 	STANDARD_RESISTORS += decades(base)
 
 # 1. Choose a C value from the standard values (after applying c_multiplier).
@@ -195,7 +199,7 @@ if r_unit not in R_UNITS:
 
 # Sweep all capacitor values and R and C combinations
 CONFIGURATIONS = []
-for value in STANDARD_BASES:
+for value in STANDARD_CAPACITOR_BASES:
 	exact_c = value * PICO * c_multiplier   # standard values are in pF for capacitors so convert to F
 	exact_r1, exact_r2, exact_r3 = calculate_resistors(exact_f, exact_c, exact_q, exact_a)
 
@@ -220,16 +224,16 @@ for value in STANDARD_BASES:
 	q_error = error(real_q, exact_q)
 	a_error = error(real_a, exact_a)
 
-	print("[C] %g F" % (exact_c))
-	print("[R1] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r1, real_r1, r1_deviation, r1_error))
-	print("[R2] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r2, real_r2, r2_deviation, r2_error))
-	print("[R3] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r3, real_r3, r3_deviation, r3_error))
-	print("[F] exact: %g Hz, real: %g Hz, error: %g (%g %%)" % (exact_f, real_f, f_deviation, f_error))
-	print("[Q] exact: %g, real: %g, error: %g (%g %%)" % (exact_q, real_q, q_deviation, q_error))
-	print("[A] exact: %g V/V, real: %g V/V, error: %g (%g %%)" % (exact_a, real_a, a_deviation, a_error))
-
 	average_error = (f_error + q_error + a_error) / 3
-	print("Average error: %g %%" % (average_error))
+
+	#print("[C] %g F" % (exact_c))
+	#print("[R1] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r1, real_r1, r1_deviation, r1_error))
+	#print("[R2] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r2, real_r2, r2_deviation, r2_error))
+	#print("[R3] exact: %g R, real: %g R, error: %g (%g %%)" % (exact_r3, real_r3, r3_deviation, r3_error))
+	#print("[F] exact: %g Hz, real: %g Hz, error: %g (%g %%)" % (exact_f, real_f, f_deviation, f_error))
+	#print("[Q] exact: %g, real: %g, error: %g (%g %%)" % (exact_q, real_q, q_deviation, q_error))
+	#print("[A] exact: %g V/V, real: %g V/V, error: %g (%g %%)" % (exact_a, real_a, a_deviation, a_error))
+	#print("Average error: %g %%" % (average_error))
 
 	if real_f >= GIGA:
 		f_unit = "GHz"
