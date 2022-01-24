@@ -1,0 +1,13 @@
+The esiest thing to do is operate the op amps using a bias at VDD/2.  Add the bias at the beginning and remove it at the end and between each stage too just like that design tha tyou found online
+
+For the blocking cap, you don't need a massive cap,just use 0.1 uF and a big resistor like 10 K and you should be good.
+
+The input amp from the example works, but idk why there is another blocking cap at the output considering we are now working with the virtual ground.
+The point of the input amp is to use a non-inverting amp (potentially unity but depends on attentuation due to input loading from cap) the input and add a DC bias which is the virtual ground so idk.
+We really only need another blocking cap at the output no?
+
+You need to use resistors to separate logical voltage nodes, that's why summing node is separated from the inputs using a resistor
+
+I more or less built the non-invering input amp and it produces the input waveform but shifted to exactly 2.5 V.  I really don't know why we need the interstage caps but maybe we do?  Something to investigate as we build this thing sequentially
+
+The good thing is that I think a simple split rail power supply should be fine.  JUST DON'T DRIVE ANY LOADS USING THE VIRTUAL GROUND
