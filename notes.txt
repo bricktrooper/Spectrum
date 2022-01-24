@@ -11,3 +11,15 @@ You need to use resistors to separate logical voltage nodes, that's why summing 
 I more or less built the non-invering input amp and it produces the input waveform but shifted to exactly 2.5 V.  I really don't know why we need the interstage caps but maybe we do?  Something to investigate as we build this thing sequentially
 
 The good thing is that I think a simple split rail power supply should be fine.  JUST DON'T DRIVE ANY LOADS USING THE VIRTUAL GROUND
+
+Ohhh so the BPF R3 cannot sink to VGND so it sinks to the real GND.  Perhaps this is why we need interstage caps.  I still don't know how the VGND offset does not affect the output.  We need to test this.
+
+DO NOT ADD THE SECOND 47 K from int audio input volltage divier!  It breaks the virtual ground!
+
+at the input you can also use a simple inverintg amp after the cap with a unity gain and V+ = VGND.  This will strip the input bias and add the VGND bias with unity gain.
+
+Use unit gain for the input amp/  Don't worry if the audio is super small on highest volume even at the output, your cheap headphone cable is just garbage.
+
+Unfortunately the 0.1uF caps are cutting out the bass, so just use the big 10uF or 470 uF or 47 uF cap with a 10K resistor.
+Technically it's an LPF with f = 1/2piRC so bigger R and C is lower cutoff (closer to 0 V DC bias). 10 uF and 10K will get you 2 Hz cutoff.  1K + 10uF is not enough.  You can also go 47uF and 10K to get 0.33 Hz cutoff.  Use this for all blocking caps + resistors
+470uF and 10K is also good but 470s are big
