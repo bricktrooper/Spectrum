@@ -82,3 +82,13 @@ To recognize Battery Charging mode, a dedicated charging port places a resistanc
 Shorted or near-shorted data lanes with less than 200 R of resistance across the "D+" and "D-" terminals signify a dedicated charging port (DCP) with indefinite charging rates.
 
 https://en.wikipedia.org/wiki/USB
+
+TRS = {left, right, GND}
+
+The circuit works better when the input GND is connected to VGND.  Output ground would have to be GND (0 V)???
+To be honest, it kinda works either way... but the input signal seems strongder when connected to VGND.
+Output is gonna be stripped of DC bias, so GND might make more sense.  There must be no bias to drive speakers anyway.
+Interestingly, it does not work if the sleeve is not connected to either GND or VGND.
+Honestly I can't really tell the difference so just use GND.
+
+You can't remove those bid caps from the VGND splitter.  Without them VGND dances with the music!
