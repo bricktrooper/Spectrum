@@ -30,16 +30,16 @@ Actually don't sink to VGND because that could mess it up.  Just sink R3 to GND.
 Buy 100 K POTs to agree with the blocking cap + resistor sizes. 100 K also gives us more leeway with amplification.
 Nevermind just go wuith 10 K POTs and use a big cap like 470 uF.
 Although, you really can't go wrong with 100 K.  It lets you use bigger blocking resistors.  Everything just scales proportionally.
-Seeing as how we will have to prototype it after buysing the stuff, 100 K may be safer.
+Seeing as how we will have to prototype it after buying the stuff, 100 K may be safer.
 We really may need a lot of amplification to drive headphones, so 100 K is safer.
 
 So apparently turning up the preamp by 100x causes the input bias to drift (amplify).  For some reason the BPF still outputs at VDD / 2.  Not sure if this is a concern but we may need blocking caps everywhere.
 Also massive amplification (100 x) takes a long time to settle before the amplifiers start working....
 Nevermind I'm not really sure
 
-Oh I can see why the drift is not affecting the BPF - because the caps on the BPF cut out the DC.  So you really don'y need it between the preamp and BPF
+Oh I can see why the drift is not affecting the BPF - because the caps on the BPF cut out the DC.  So you really don't need it between the preamp and BPF
 
-I don't think the settling problem will be a mjor issue because in AC couping mode it settles fast.  It just takes a while for it to reach the correct DC bias.  Really need to listen the output with headphones
+I don't think the settling problem will be a major issue because in AC couping mode it settles fast.  It just takes a while for it to reach the correct DC bias.  Really need to listen the output with headphones
 
 Interestingly there is no drift when using 10 K POT over 100 R with 470 uF.... cutoff is 3.3 Hz
 
@@ -81,6 +81,8 @@ To be fair, 741s max current is 2.8 mA, but that's for 1 op amp, so ~5.6 mA for 
 To recognize Battery Charging mode, a dedicated charging port places a resistance not exceeding 200 R across the D+ and D- terminals.
 Shorted or near-shorted data lanes with less than 200 R of resistance across the "D+" and "D-" terminals signify a dedicated charging port (DCP) with indefinite charging rates.
 
+The 200 R thing is for the charger (device supplying power "dedicated charging port") so just forget about it.
+
 https://en.wikipedia.org/wiki/USB
 
 TRS = {left, right, GND}
@@ -92,3 +94,23 @@ Interestingly, it does not work if the sleeve is not connected to either GND or 
 Honestly I can't really tell the difference so just use GND.
 
 You can't remove those bid caps from the VGND splitter.  Without them VGND dances with the music!
+
+The ID line should be left floating on micro USB B (grounded means master, floating means slave).
+
+Search "Bourns potentiometers" and download their PCB footprints for the PTL series.
+
+Get 10 K pots.  If preamp is too quiet, use 10 K over 100 R instead of 10 K over 1 K.  Cutoff only increases to 3 Hz which is perfectly okay
+Alternatively I can get a 100 K for the preamps only.  They don't have green for 10 K anyway.
+Well, none of the 10 K POTs are instock (45 mm) and 30 mm is too short.  So 45 mm 100 K for all of them.
+
+PTL45-15G1-104B2-ND - 100 K 15 mm height green LED centre detent B2 linear taper 45 mm slider
+PTL45-15R1-104B2-ND - 100 K 15 mm height red LED centre detent B2 linear taper 45 mm slider
+
+Please order some wire from Digikey as well.  I don't care if the colour is the same.  Just get red, black, and white or something
+
+There's barely any options availble on digikey.
+This is the best I can find, unless you want 30 mm.  At least these have centre detent and are linear and have the same stem length:
+PTL60-15G1-103B2 - 60 mm 10 K greens for faders
+PTL60-15O1-104B2 - 60 mm 100 K orange for preamp
+
+Just buy these.

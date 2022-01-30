@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "Bourns_PTL_Potentiometer")(type "KiCad")(uri "/Users/Kyle/Files/Documents/KiCad/Libraries/Bourns_PTL_Potentiometer")(options "")(descr ""))
+)
