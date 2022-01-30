@@ -25,9 +25,60 @@ Technically it's an LPF with f = 1/2piRC so bigger R and C is lower cutoff (clos
 470uF and 10K is also good but 470s are big
 
 The ground under R3 in the BPF can be either VGND (VDD / 2) or GND (0 V).  It doesn't matter which one (not really sure why by whatevs).  Just make sure that the positive input of the op and is connected to VGND, which means that you don't need a cap after the preamp (before the BPF inputs).
+Actually don't sink to VGND because that could mess it up.  Just sink R3 to GND.
 
 Buy 100 K POTs to agree with the blocking cap + resistor sizes. 100 K also gives us more leeway with amplification.
 Nevermind just go wuith 10 K POTs and use a big cap like 470 uF.
 Although, you really can't go wrong with 100 K.  It lets you use bigger blocking resistors.  Everything just scales proportionally.
 Seeing as how we will have to prototype it after buysing the stuff, 100 K may be safer.
 We really may need a lot of amplification to drive headphones, so 100 K is safer.
+
+So apparently turning up the preamp by 100x causes the input bias to drift (amplify).  For some reason the BPF still outputs at VDD / 2.  Not sure if this is a concern but we may need blocking caps everywhere.
+Also massive amplification (100 x) takes a long time to settle before the amplifiers start working....
+Nevermind I'm not really sure
+
+Oh I can see why the drift is not affecting the BPF - because the caps on the BPF cut out the DC.  So you really don'y need it between the preamp and BPF
+
+I don't think the settling problem will be a mjor issue because in AC couping mode it settles fast.  It just takes a while for it to reach the correct DC bias.  Really need to listen the output with headphones
+
+Interestingly there is no drift when using 10 K POT over 100 R with 470 uF.... cutoff is 3.3 Hz
+
+I really wanna design this in a way where I don't need to jack the volume up to max on my computer just to get the signal to be useful.  If the preamp can take care of this amplification that would be great.
+
+Also 3.3 Hz cutoff is not bad, nobody can really hear 3 Hz unless you have massive subwoofers.
+
+10 K POT over 100 R with 470 uF works really well (up to 2 VPP which is like max volumne blow your eardrums out).  Also remember that A = 2 so that's more amplification if needed.  Also the drift is minimal in this config
+
+Can't use passive pot attentuator because it reduces the DC bias as well.
+Two options:
+1. Use another op amp
+2. Use the non-linear arrangement on the mixer
+
+The non-linear was tested with LM348N.  It works but it highly non-linear which limits it to a "sweet spot" of linearity near the middle.
+The non-linearity might actually be good for decibels.  Need to test it out with headphones.
+The non-linearity is not as bad if Rf is larger like 10 K (if you are using 10 K pot).
+However another issue with the non-linearity is that at the lowest volume it is not 100 % cut.  Option 1 allows to completely cut a band out to 0 V.
+
+Option one means doubling the number of op amps.
+
+LM833 uses max 8 mA for 2 op amps (1 chip).  For 1 channel, we have 10 bands * 2 op amps (1 chip) each + extra chip (preamp + mixer) = 11 chips
+So for 2 channels we have 22 chips minimum:
+8 mA * 22 = 176 mA which is kinda high
+This does not include LEDs, which draw about 20 mA * 22 = 440 mA.
+wtf I think the LEDs are the bigger issue here.
+
+USB 2 is 500 mA and USB 3 is 900 mA.  This is already dangerous for USB 2.
+
+If you use a 1 K with the LED the current is 3.5 mA (don''t use 10 K it's too dim).  So 3.5 mA * 22 faders = 77 mA
+
+77 + 176 = 253 mA which is okay.
+Not really looking forward to doubling the amplifiers but as long as USB can handle it I don't care.
+We also need to consider the current draw of the whole circuit (extra caps and 7805).
+
+With 2 741s and a 348 we're at 10 mA (10 / 3) = 3.33 mA per amp.  Remember that the max current is 8 mA for 833 not typical (5 mA).
+To be fair, 741s max current is 2.8 mA, but that's for 1 op amp, so ~5.6 mA for 2 op amps.
+
+To recognize Battery Charging mode, a dedicated charging port places a resistance not exceeding 200 R across the D+ and D- terminals.
+Shorted or near-shorted data lanes with less than 200 R of resistance across the "D+" and "D-" terminals signify a dedicated charging port (DCP) with indefinite charging rates.
+
+https://en.wikipedia.org/wiki/USB
