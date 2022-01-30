@@ -113,4 +113,7 @@ This is the best I can find, unless you want 30 mm.  At least these have centre 
 PTL60-15G1-103B2 - 60 mm 10 K greens for faders
 PTL60-15O1-104B2 - 60 mm 100 K orange for preamp
 
-Just buy these.
+So the slide length is from the centre of the stem, so 30 mm = 41 mm
+
+PTL30-15R0-103B1-ND   30 mm red 10 K
+PTL30-10G1-103B2-ND   30 mm green 10 K

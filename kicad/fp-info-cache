@@ -1,4 +1,4 @@
-19821435241359187
+19821435284336643
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -314,10 +314,10 @@ battery CR-3032 coin cell vertical
 0
 2
 2
-Bourns_PTL_Potentiometer
-PTL6015G1103B2
-PTL60-15G1-103B2-5
-Variable Resistor
+Bourns_PTL
+PTL30
+PTL30
+Connector
 0
 6
 6
