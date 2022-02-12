@@ -10092,7 +10092,7 @@
     (in_bom yes) (on_board yes)
     (uuid 85634b21-e966-40ed-a4d2-e59f53fee5db)
     (property "Reference" "R126" (id 0) (at 547.37 201.93 90))
-    (property "Value" "100R" (id 1) (at 547.37 207.01 90))
+    (property "Value" "1K" (id 1) (at 547.37 207.01 90))
     (property "Footprint" "" (id 2) (at 547.624 205.486 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -12524,7 +12524,7 @@
     (in_bom yes) (on_board yes)
     (uuid e080946b-11f2-49f7-a907-a5898cf531fe)
     (property "Reference" "R1" (id 0) (at 50.8 201.93 90))
-    (property "Value" "100R" (id 1) (at 50.8 207.01 90))
+    (property "Value" "1K" (id 1) (at 50.8 207.01 90))
     (property "Footprint" "" (id 2) (at 50.546 205.486 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -14119,7 +14119,7 @@
       (reference "PTL42") (unit 2) (value "10K") (footprint "")
     )
     (path "/e080946b-11f2-49f7-a907-a5898cf531fe"
-      (reference "R1") (unit 1) (value "100R") (footprint "")
+      (reference "R1") (unit 1) (value "1K") (footprint "")
     )
     (path "/cb2e50f6-8c65-43f2-b38d-30223dcabf92"
       (reference "R2") (unit 1) (value "470R") (footprint "")
@@ -14494,7 +14494,7 @@
       (reference "R125") (unit 1) (value "16K") (footprint "")
     )
     (path "/85634b21-e966-40ed-a4d2-e59f53fee5db"
-      (reference "R126") (unit 1) (value "100R") (footprint "")
+      (reference "R126") (unit 1) (value "1K") (footprint "")
     )
     (path "/b58d0db8-9a2f-40d6-80cd-7939e1b77f51"
       (reference "SW1") (unit 1) (value "POWER") (footprint "")
