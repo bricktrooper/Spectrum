@@ -12445,7 +12445,7 @@
     (pin "2" (uuid 9c6e3cda-feb6-4091-8101-95b44203aab7))
   )
 
-  (symbol (lib_id "Device:Opamp_Dual") (at 201.93 209.55 0) (mirror x) (unit 2)
+  (symbol (lib_id "Device:Opamp_Dual") (at 201.93 209.55 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d783e9b2-f9eb-4b61-ab93-f012906accf8)
     (property "Reference" "U1" (id 0) (at 201.93 214.63 0))
@@ -12456,9 +12456,9 @@
     (property "Datasheet" "~" (id 3) (at 201.93 209.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "5" (uuid 2b0f4f4c-4656-4b2f-9854-808ae0868d2e))
-    (pin "6" (uuid 78dd6836-bfa4-4888-a8ea-774c84cf4200))
-    (pin "7" (uuid 1fc8e63f-6324-46f0-b607-7613a1a50810))
+    (pin "1" (uuid 29d37ced-1693-4fce-a991-b508060f0dfc))
+    (pin "2" (uuid 3804fc39-2d72-4f7a-9dd6-f57f608400a5))
+    (pin "3" (uuid 02a96c24-0d82-47eb-873e-8d40348f697a))
   )
 
   (symbol (lib_id "Device:R_US") (at 347.98 165.1 0) (mirror y) (unit 1)
@@ -12566,7 +12566,7 @@
     (pin "1" (uuid 569fd1d7-d9f3-4445-9eba-d5f4f9096d3b))
   )
 
-  (symbol (lib_id "Device:Opamp_Dual") (at 67.31 207.01 0) (mirror x) (unit 1)
+  (symbol (lib_id "Device:Opamp_Dual") (at 67.31 207.01 0) (mirror x) (unit 2)
     (in_bom yes) (on_board yes)
     (uuid dcf9856d-8e58-482b-ac3e-ed7ca9899b4c)
     (property "Reference" "U1" (id 0) (at 67.31 212.09 0))
@@ -12577,9 +12577,9 @@
     (property "Datasheet" "~" (id 3) (at 67.31 207.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 405f8772-5c91-4843-a95b-929e769e757a))
-    (pin "2" (uuid 37f519dd-d553-4b34-890c-c9a964216482))
-    (pin "3" (uuid e80103aa-5561-41fe-a0b4-fba0004b739b))
+    (pin "5" (uuid 6c6c213f-0125-4841-a04e-5210f411774b))
+    (pin "6" (uuid 711d1f2b-7c6f-4406-bf53-35aa8485f67f))
+    (pin "7" (uuid 028ac1b4-e1ed-461b-997d-aadb6b1ef972))
   )
 
   (symbol (lib_id "Device:Opamp_Dual") (at 476.25 78.74 180) (unit 1)
@@ -14899,10 +14899,10 @@
     (path "/bfcfb0fe-0699-47a2-9dd3-b1d204562d9b"
       (reference "TP29") (unit 1) (value "Vpreamp_R") (footprint "TestPoint:TestPoint_Keystone_5000-5004_Miniature")
     )
-    (path "/dcf9856d-8e58-482b-ac3e-ed7ca9899b4c"
+    (path "/d783e9b2-f9eb-4b61-ab93-f012906accf8"
       (reference "U1") (unit 1) (value "LM833") (footprint "Package_DIP:DIP-8_W7.62mm_Socket_LongPads")
     )
-    (path "/d783e9b2-f9eb-4b61-ab93-f012906accf8"
+    (path "/dcf9856d-8e58-482b-ac3e-ed7ca9899b4c"
       (reference "U1") (unit 2) (value "LM833") (footprint "Package_DIP:DIP-8_W7.62mm_Socket_LongPads")
     )
     (path "/971ca94f-20a3-491d-a912-63df8cfbcc5b"
