@@ -1,4 +1,5 @@
 (fp_lib_table
   (lib (name "CK_Switches")(type "KiCad")(uri "/Users/Kyle/Files/Documents/KiCad/Libraries/CK_Switches")(options "")(descr ""))
   (lib (name "Audio_Jack_STX35013N")(type "KiCad")(uri "/Users/Kyle/Files/Documents/KiCad/Libraries/Kycon_Audio/Audio_Jack_STX35013N")(options "")(descr ""))
+  (lib (name "Triad_Magnetics_SP-70")(type "KiCad")(uri "/Users/Kyle/Files/Documents/KiCad/Libraries/Triad_Magnetics_SP-70")(options "")(descr ""))
 )
