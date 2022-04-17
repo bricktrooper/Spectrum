@@ -58,3 +58,10 @@ The mixer is a summing amplifier that re-combines all the band signals back into
 
 ### Bottom
 ![Bottom](images/board_bottom.png)
+
+### Assembled
+![Assembled](images/board_assembled.png)
+
+## Revisions
+
+- A 470R resistor was added to the audio output to mitigate the amplified hissing noise.  The side effect of this is reduced gain from the preamp.  This could potentially be addressed by using a preamp with a larger maximum gain.
