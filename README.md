@@ -10,13 +10,13 @@ A graphic equalizer is a piece of audio equipment that isolates different ranges
 
 ### Stereo Sound
 
-The most basic form of electrical audio signals is "mono".  This is a single audio signal that plays through all the speakers.  "Stereo" uses two separate audio signals that differ slightly but can be used to give the perception of spatial audio.  Typically, the signals are used to drive separate "left" and "right" speakers.  A graphic euqalizer only operates on a single mono signal, so Spectrum effectively uses two identical circuits to module both channels of stereo audio.  The resulting output can be played through stereo headphones.  The circuit must be powered by an external wall adapter or any other 5 V source that can supply approximately 200 mA of current.
+The most basic form of electrical audio signals is "mono".  This is a single audio signal that plays through all the speakers.  "Stereo" uses two separate audio signals that differ slightly but can be used to give the perception of spatial audio.  Typically, the signals are used to drive separate "left" and "right" speakers.  A graphic euqalizer only operates on a single mono signal.  Spectrum effectively uses two identical mono circuits to modify both channels of stereo audio.  The resulting output can be played through stereo headphones.  The circuit must be powered by an external wall adapter or any other 5 V source that can supply approximately 250 mA of current.
 
 ## Circuit Design
 
 ### Power Supply
 
-Spectrum uses a 5 V power supply that is regulated by an L7805 power supply IC.  Traditionally, operational amplifiers use a bipolar supply of +VDD and -VDD, with the ground point of the signal being 0 V.  This is not possible with a single supply.  Therefore, Spectrum raises the ground point to a virtual ground of VDD / 2, or 2.5 V.  The op amps are supplied by 5 V and sink to 0 V (GND).  This provides 2.5 V of signal swing, which is enough for driving headphones to a considerable volume.  To drive large speakers, a separate amplifier should be used.
+Spectrum uses a 5 V power supply that is regulated by an L7805 LDO.  Traditionally, operational amplifiers use a bipolar supply of +VDD and -VDD, with the ground point of the signal being 0 V.  This is not possible with a single supply.  Therefore, Spectrum raises the ground point to a virtual ground of (VDD / 2), or 2.5 V.  The op amps are supplied by 5 V and sink to 0 V (GND).  This provides 2.5 V of signal swing, which is enough for driving headphones to a considerable volume.  To drive large speakers, a separate amplifier should be used.
 
 ### Preamplifier
 
