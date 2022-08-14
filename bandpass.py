@@ -112,6 +112,9 @@ def A(r1, r2):
 	# abs(A) since A is actually negative due to inverting nature of the BPF.
 	return r2 / (2 * r1)   # must be less than 2Q^2
 
+def BW(f, q):
+	return f / q
+
 # ======= STANDARD R AND C VALUES ======= #
 
 # The standard values are available in decade multiples.
@@ -137,7 +140,7 @@ for base in STANDARD_RESISTOR_BASES:
 # 1. Choose a C value from the standard values (after applying c_multiplier).
 # 2. Calcualte the exact R1, R2, and R3 values given the chosen C value.
 # 3. Find the closest standard resistor values for R1, R2, R3.
-# 4. recalcualte f, Q, and A with the standard resistor values to determine the error.
+# 4. recalculate f, Q, and A with the standard resistor values to determine the error.
 
 def pick_resistor(exact):
 	closest = STANDARD_RESISTORS[0]   # assume that the first value is the best
@@ -168,7 +171,7 @@ def usage():
 	print("Q            : quality factor")
 	print("A            : abs(max gain) at f")
 	print("C unit       : pF, nF, uF, mF, F, kF, MF")
-	print("R unit       : pR, nR, uR, mR, R, kR, MR")
+	print("R unit       : p, n, u, m, R, K, M")
 	print("C multiplier : scaling factor for C")
 	print("-----------------------------------------------------")
 
@@ -209,6 +212,7 @@ for value in STANDARD_CAPACITOR_BASES:
 	real_f = F(real_r1, real_r2, real_r3, exact_c)
 	real_q = Q(real_r1, real_r2, real_r3)
 	real_a = A(real_r1, real_r2)
+	real_bw = BW(real_f, real_q)
 
 	r1_deviation = deviation(real_r1, exact_r1)
 	r2_deviation = deviation(real_r2, exact_r2)
@@ -244,6 +248,15 @@ for value in STANDARD_CAPACITOR_BASES:
 	else:
 		f_unit = "Hz"
 
+	if real_bw >= GIGA:
+		bw_unit = "GHz"
+	elif real_bw >= MEGA:
+		bw_unit = "MHz"
+	elif real_bw >= KILO:
+		bw_unit = "kHz"
+	else:
+		bw_unit = "Hz"
+
 	CONFIGURATIONS.append(
 		{
 			"error": "%.3f" % (average_error),
@@ -254,18 +267,19 @@ for value in STANDARD_CAPACITOR_BASES:
 			"f":     "%.3f %s" % (f_convert(real_f, f_unit), f_unit),
 			"Q":     "%.3f" % (real_q),
 			"A":     "%.3f V/V" % (real_a),
+			"BW":    "%.3f %s" % (f_convert(real_bw, bw_unit), bw_unit)
 		}
 	)
 
 # Sort all configurations by average error
 CONFIGURATIONS = sorted(CONFIGURATIONS, key = lambda f: float(f["error"]))
 
-print("---------------------------------------------------------------------------------------------------------")
-print("| %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |" % ("ERROR", "C", "R1", "R2", "R3", "f", "Q", "A"))
-print("---------------------------------------------------------------------------------------------------------")
+print("----------------------------------------------------------------------------------------------------------------------")
+print("| %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |" % ("ERROR", "C", "R1", "R2", "R3", "f", "Q", "A", "BW"))
+print("----------------------------------------------------------------------------------------------------------------------")
 
 for configuration in CONFIGURATIONS:
-	print("| %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |" % (
+	print("| %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |" % (
 			configuration["error"],
 			configuration["C"],
 			configuration["R1"],
@@ -273,8 +287,9 @@ for configuration in CONFIGURATIONS:
 			configuration["R3"],
 			configuration["f"],
 			configuration["Q"],
-			configuration["A"]
+			configuration["A"],
+			configuration["BW"]
 		)
 	)
 
-print("---------------------------------------------------------------------------------------------------------")
+print("----------------------------------------------------------------------------------------------------------------------")
